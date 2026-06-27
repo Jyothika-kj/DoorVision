@@ -1,4 +1,4 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
@@ -8,7 +8,7 @@ class Settings(BaseSettings):
 
     DATABASE_URL: str
 
-    CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
+    CORS_ORIGINS: str = "http://localhost:5173"
 
     JWT_SECRET_KEY: str
     JWT_ALGORITHM: str = "HS256"
@@ -20,15 +20,16 @@ class Settings(BaseSettings):
     YOLO_CONFIDENCE: float = 0.35
     YOLO_TARGET_CLASS: str = "person"
 
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
-        extra="ignore",
-    )
-
     @property
-    def cors_origin_list(self) -> list[str]:
-        return [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]
+    def cors_origins_list(self) -> list[str]:
+        return [
+            origin.strip()
+            for origin in self.CORS_ORIGINS.split(",")
+            if origin.strip()
+        ]
+
+    class Config:
+        env_file = ".env"
 
 
 settings = Settings()
