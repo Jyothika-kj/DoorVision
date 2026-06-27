@@ -1,0 +1,21 @@
+# Python
+backend/venv/
+backend/__pycache__/
+backend/.env
+*.pyc
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# AI models
+backend/app/ai/models/*.pt
+
+# Generated files
+backend/app/static/snapshots/
+backend/app/static/reports/
+
+# System
+.DS_Store
+Thumbs.db
