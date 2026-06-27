@@ -10,11 +10,14 @@ frontend/dist/
 frontend/.env
 
 # AI models
+*.pt
+backend/*.pt
 backend/app/ai/models/*.pt
 
 # Generated files
 backend/app/static/snapshots/
 backend/app/static/reports/
+backend/app/static/uploads/videos/
 
 # System
 .DS_Store
